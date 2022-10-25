@@ -179,7 +179,7 @@ impl Provider {
 
         if !output.status.success() {
             return Err(Error::CommandFailed(
-                String::from_utf8(output.stdout).unwrap_or_default(),
+                String::from_utf8(output.stderr).unwrap_or_default(),
             ));
         }
 
