@@ -133,6 +133,7 @@ impl Provider {
             Self::DigitalOcean => {
                 // doctl kubernetes cluster kubeconfig save <cluster>
                 let cluster = params.get("cluster")?;
+                let context = params.get("context").ok();
                 let mut command = Command::new("doctl");
                 command
                     .arg("kubernetes")
@@ -140,6 +141,11 @@ impl Provider {
                     .arg("kubeconfig")
                     .arg("save")
                     .arg(cluster);
+
+                if let Some(context) = context {
+                    command.args(["--context", context]);
+                }
+
                 command
             }
             Self::EKS => {
