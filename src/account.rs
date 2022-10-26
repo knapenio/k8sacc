@@ -93,7 +93,7 @@ mod tests {
                 },
                 Account {
                     alias: "eks-beta".to_owned(),
-                    provider: Provider::EKS,
+                    provider: Provider::Eks,
                     params: Parameters::from_iter([
                         ("true".to_owned(), "no".to_owned()),
                         ("false".to_owned(), "yes".to_owned())
@@ -132,7 +132,7 @@ mod tests {
             },
             Account {
                 alias: "lucy".to_owned(),
-                provider: Provider::EKS,
+                provider: Provider::Eks,
                 params: Default::default(),
             },
             Account {
@@ -157,7 +157,7 @@ mod tests {
                 },
                 Account {
                     alias: "lucy".to_owned(),
-                    provider: Provider::EKS,
+                    provider: Provider::Eks,
                     params: Default::default(),
                 },
             ]

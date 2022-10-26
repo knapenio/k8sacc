@@ -8,7 +8,7 @@ pub enum Provider {
     DigitalOcean,
     /// Amazon EKS
     #[serde(rename = "eks")]
-    EKS,
+    Eks,
 }
 
 impl Provider {
@@ -33,7 +33,7 @@ impl Provider {
 
                 command
             }
-            Self::EKS => {
+            Self::Eks => {
                 let params: EksParameters = params.try_into()?;
                 // aws eks --region <region> update-kubeconfig --name <name> --region <region> --profile <profile>
                 let mut command = Command::new("aws");
