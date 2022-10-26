@@ -1,5 +1,5 @@
 [package]
-name = "awsacc"
+name = "k8sacc"
 version = "0.1.0"
 edition = "2021"
 
