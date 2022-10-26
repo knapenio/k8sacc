@@ -1,7 +1,7 @@
 use crate::{params::*, Error, Result};
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq)]
 pub enum Provider {
     /// DigitalOcean
     #[serde(rename = "do")]
