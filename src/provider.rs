@@ -3,8 +3,10 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub enum Provider {
+    /// DigitalOcean
     #[serde(rename = "do")]
     DigitalOcean,
+    /// Amazon EKS
     #[serde(rename = "eks")]
     EKS,
 }
@@ -16,6 +18,7 @@ impl Provider {
         let mut command: Command = match self {
             Self::DigitalOcean => {
                 let params: DigitalOceanParameters = params.try_into()?;
+                // doctl kubernetes cluster kubeconfig save <cluster> --context <context>
                 let mut command = Command::new("doctl");
                 command
                     .arg("kubernetes")
@@ -32,7 +35,7 @@ impl Provider {
             }
             Self::EKS => {
                 let params: EksParameters = params.try_into()?;
-                // aws eks --region <region> update-kubeconfig --name <name> --profile <profile>
+                // aws eks --region <region> update-kubeconfig --name <name> --region <region> --profile <profile>
                 let mut command = Command::new("aws");
                 command
                     .arg("eks")

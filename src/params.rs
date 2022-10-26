@@ -7,10 +7,11 @@ use std::collections::HashMap;
 pub struct Parameters(HashMap<String, String>);
 
 impl Parameters {
-    pub fn get(&self, key: &str) -> Result<&String> {
+    /// Get the value for a given parameter.
+    pub fn get(&self, param: &str) -> Result<&String> {
         self.0
-            .get(key)
-            .ok_or_else(|| Error::MissingParameter(key.to_owned()))
+            .get(param)
+            .ok_or_else(|| Error::MissingParameter(param.to_owned()))
     }
 }
 
